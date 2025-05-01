@@ -1,0 +1,131 @@
+.editable-field {
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    min-height: 1.5em;
+  }
+  
+  .editable-field:hover {
+    background-color: rgba(74, 108, 247, 0.1);
+  }
+  
+  .editable-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .editable-input,
+  .editable-textarea {
+    width: 100%;
+    padding: 4px 8px;
+    border: 1px solid #4a6cf7;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background-color: white;
+    outline: none;
+  }
+  
+  .editable-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .editable-toolbar {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    display: flex;
+    gap: 4px;
+    background-color: white;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    padding: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+  }
+  
+  .font-size-group,
+  .color-group {
+    display: flex;
+    gap: 2px;
+    margin-left: 4px;
+    border-left: 1px solid #eaeaea;
+    padding-left: 4px;
+  }
+  
+  .color-picker,
+  .bg-color-picker {
+    width: 24px;
+    height: 24px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .bg-color-picker {
+    position: relative;
+  }
+  
+  .bg-color-picker::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 40%,
+      #ddd 40%,
+      #ddd 60%,
+      transparent 60%,
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+  
+  .toolbar-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+  }
+  
+  .toolbar-btn:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .toolbar-btn.active {
+    background-color: #4a6cf7;
+    color: white;
+  }
+  
+  .editable-input[contenteditable="true"],
+  .editable-textarea[contenteditable="true"] {
+    min-height: 1.5em;
+    outline: none;
+    white-space: pre-wrap;
+    word-break: break-word;
+    padding: 4px 8px;
+    border: 1px solid #4a6cf7;
+    border-radius: 4px;
+    direction: ltr;
+    text-align: left;
+  }
+  
+  .editable-textarea[contenteditable="true"] {
+    min-height: 100px;
+  }
+  
