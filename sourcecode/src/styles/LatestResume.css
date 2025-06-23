@@ -1,0 +1,80 @@
+.latest-resume-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.latest-resume-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.latest-resume-container h3 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #4a6cf7;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+.resume-json-display {
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  padding: 15px;
+  overflow: auto;
+  max-height: 400px;
+  margin-bottom: 30px;
+}
+
+.resume-json-display pre {
+  margin: 0;
+  white-space: pre-wrap;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.resume-basics {
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.basics-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.basics-content p {
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+}
+
+.loading-spinner {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 20px auto;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #4a6cf7;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  color: #e53935;
+  text-align: center;
+  font-weight: bold;
+}

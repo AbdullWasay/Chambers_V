@@ -1,0 +1,17 @@
+    return sectionsForThisPage.map((section, idx) => {
+      // Handle both string sections and object sections
+      const sectionId = typeof section === 'string' ? section : section.id;
+      console.log(`Processing section ${idx}: ${sectionId}`);
+      
+      const sectionData = data[sectionId];
+      console.log(`Section data for ${sectionId}:`, sectionData);
+
+      // Extract visibility information from the section
+      const visibility = section._visibility || {};
+      const continuesFromPrevious = visibility.continuesFromPrevious || false;
+      const continuesToNext = visibility.continuesToNext || false;
+
+      if (!sectionData) {
+        console.log(`No data found for section: ${sectionId}`);
+        return null;
+      }

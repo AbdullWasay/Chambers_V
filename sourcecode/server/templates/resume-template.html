@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{name}} - Resume</title>
+  <style>
+    /* Global styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+    body {
+      font-family: {{fontFamily}}, 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      background-color: white;
+      color: #333;
+      line-height: 1.5;
+      font-size: {{fontSize}}px;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 20mm;
+      margin: 0 auto;
+      background: white;
+      position: relative;
+      page-break-after: always;
+    }
+
+    /* Modern Template Styles */
+    .modern-template .resume-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid {{primaryColor}};
+    }
+
+    .modern-template .resume-header-content {
+      flex: 1;
+    }
+
+    .modern-template .resume-name-title {
+      margin-bottom: 10px;
+    }
+
+    .modern-template .resume-name {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      line-height: 1.2;
+      color: {{primaryColor}};
+    }
+
+    .modern-template .resume-title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    .modern-template .resume-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .modern-template .resume-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+    }
+
+    .modern-template .resume-section {
+      margin-bottom: 15px;
+    }
+
+    .modern-template .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .modern-template .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0;
+      color: {{primaryColor}};
+    }
+
+    .modern-template .section-content {
+      font-size: 12px;
+    }
+
+    .modern-template .experience-item {
+      margin-bottom: 15px;
+    }
+
+    .modern-template .experience-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+
+    .modern-template .experience-title {
+      font-weight: 600;
+      color: {{primaryColor}};
+    }
+
+    .modern-template .experience-company {
+      font-weight: 500;
+    }
+
+    .modern-template .experience-period {
+      color: #666;
+    }
+
+    .modern-template .experience-description {
+      margin-top: 5px;
+    }
+
+    .modern-template .experience-bullets {
+      margin-top: 5px;
+      padding-left: 20px;
+    }
+
+    .modern-template .experience-bullet {
+      margin-bottom: 3px;
+    }
+
+    /* Skills section */
+    .modern-template .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .modern-template .skill-category {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .modern-template .skill-category-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 13px;
+      color: {{primaryColor}};
+    }
+
+    .modern-template .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .modern-template .skill-item {
+      background-color: #f5f5f5;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-size: 11px;
+    }
+
+    /* Education section */
+    .modern-template .education-item {
+      margin-bottom: 15px;
+    }
+
+    .modern-template .education-degree {
+      font-weight: 600;
+      color: {{primaryColor}};
+    }
+
+    .modern-template .education-school {
+      font-weight: 500;
+    }
+
+    .modern-template .education-year {
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="resume-template {{template}}-template">
+      {{content}}
+    </div>
+  </div>
+</body>
+</html>

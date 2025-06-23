@@ -1,0 +1,197 @@
+.customization-sidebar {
+  position: fixed;
+  top: 60px; /* Add space for navbar */
+  right: -350px;
+  width: 350px;
+  height: calc(100vh - 60px); /* Adjust height to account for navbar */
+  background-color: white;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.customization-sidebar.open {
+  right: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eaeaea;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+}
+
+.sidebar-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.close-button:hover {
+  background-color: #f0f0f0;
+}
+
+.sidebar-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.customization-dial {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dial-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.dial-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a6cf7;
+  background-color: rgba(74, 108, 247, 0.1);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.dial-description {
+  font-size: 12px;
+  color: #666;
+  margin: 0 0 8px 0;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.slider-label {
+  font-size: 12px;
+  color: #666;
+  width: 60px;
+}
+
+.slider {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #eaeaea;
+  outline: none;
+  border-radius: 2px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #4a6cf7;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #4a6cf7;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.apply-button {
+  padding: 10px 20px;
+  background-color: #4a6cf7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.apply-button:hover {
+  background-color: #3a5ce5;
+}
+
+/* Toggle button for the sidebar */
+.sidebar-toggle {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: #4a6cf7;
+  color: white;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-toggle:hover {
+  background-color: #3a5ce5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .customization-sidebar {
+    width: 300px;
+    right: -300px;
+  }
+
+  .slider-label {
+    width: 50px;
+    font-size: 11px;
+  }
+}

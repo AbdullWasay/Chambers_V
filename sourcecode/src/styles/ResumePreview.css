@@ -1,0 +1,715 @@
+.resume-preview-container {
+  width: 100%;
+  overflow: visible;
+  padding: 20px 0;
+  height: auto;
+}
+
+.pages-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px; /* Added gap between pages */
+  padding-bottom: 30px;
+  overflow: visible;
+  height: auto;
+}
+
+.resume-page-wrapper {
+  position: relative;
+  margin-bottom: 0; /* Removed margin between pages */
+}
+
+.resume-page {
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  width: 793px; /* A4 width in pixels at 96dpi (210mm) */
+  min-height: 1122px; /* A4 height in pixels at 96dpi (297mm) - Changed to min-height */
+  height: auto; /* Allow the page to grow as needed */
+  overflow: visible; /* Show all content, even if it overflows */
+  font-size: 12px; /* Smaller font size to fit more content */
+  /* Scale to fit screen while maintaining A4 proportions */
+  transform: scale(0.8);
+  transform-origin: top center;
+  margin-bottom: 30px; /* Added margin between pages */
+  box-sizing: border-box; /* Include padding in the height calculation */
+  page-break-after: avoid; /* Prevent page breaks after this element */
+  page-break-inside: avoid; /* Prevent page breaks within this element */
+  padding-bottom: 30px; /* Add padding at the bottom for better spacing */
+}
+
+.page-number {
+  position: absolute;
+  bottom: 5px; /* Moved inside the page instead of below it */
+  right: 5px; /* Positioned in the bottom right corner */
+  background-color: rgba(245, 245, 245, 0.8);
+  color: #666;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.resume-preview {
+  width: 100%;
+  height: auto; /* Allow height to grow as needed */
+  min-height: 100%;
+  padding: 20px; /* Increased padding for better spacing */
+  background-color: #fff;
+  position: relative;
+  overflow: visible; /* Show all content */
+  box-sizing: border-box; /* Include padding in the height calculation */
+}
+
+.resume-content {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.resume-template {
+  width: 100%;
+  max-width: 763px; /* 21cm - 2*15px padding */
+  margin: 0 auto;
+  font-size: 12px; /* Smaller font size */
+  line-height: 1.2; /* Tighter line height */
+  color: #333;
+  height: auto;
+  min-height: 100%;
+  overflow: visible;
+}
+
+/* Header styles - Clean and professional */
+.resume-header {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.resume-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #6b8af8; /* Lighter blue color to match section titles */
+  text-align: left;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.resume-title {
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 10px;
+  color: #555;
+  text-align: left;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  font-style: italic;
+}
+
+.resume-contact {
+  display: flex;
+  justify-content: flex-start; /* Changed from center to flex-start for left alignment */
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: #666;
+}
+
+.resume-contact-item, .contact-item {
+  margin: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-icon {
+  color: #6b8af8; /* Lighter blue color to match section titles */
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+.resume-section {
+  margin-bottom: 20px; /* Increased from 15px to 20px for better spacing */
+  padding-bottom: 0;
+}
+
+/* Make second page sections more compact */
+.resume-template > .resume-section:nth-child(n+4) {
+  margin-bottom: 6px;
+}
+
+.section-title {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #6b8af8; /* Lighter blue color */
+  display: block;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  text-transform: uppercase; /* Standardized to uppercase */
+  border-bottom: 1px solid #e0e7ff; /* Light border for all headings */
+  padding-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* Make second page section titles more compact but maintain style */
+.resume-template > .resume-section:nth-child(n+4) .section-title {
+  font-size: 14px; /* Keep consistent with other section titles */
+  margin-bottom: 10px; /* Keep consistent with other section titles */
+  padding-bottom: 4px; /* Keep consistent with other section titles */
+}
+
+/* Summary section - Clean and space-efficient */
+.summary-content {
+  font-size: 11px;
+  line-height: 1.4;
+  color: #555;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+/* Page controls */
+.page-controls {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 100;
+}
+
+.page-control-icons {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  padding: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.page-control-icon {
+  margin: 0 5px;
+  cursor: pointer;
+  color: #666;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.page-control-icon:hover {
+  color: #6b8af8; /* Lighter blue color to match section titles */
+  transform: scale(1.1);
+}
+
+.page-control-icon.delete-icon:hover {
+  color: #e74c3c;
+}
+
+/* Add page button */
+.add-page-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 794px;
+  height: 40px; /* Reduced height */
+  background-color: #f5f5f5;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #666;
+  font-size: 14px; /* Smaller font */
+  transition: all 0.2s ease;
+  margin-top: 10px; /* Small gap before add button only */
+}
+
+.add-page-button:hover {
+  background-color: #eaeaea;
+  border-color: #6b8af8; /* Lighter blue color to match section titles */
+  color: #6b8af8; /* Lighter blue color to match section titles */
+}
+
+.add-page-button svg {
+  margin-right: 8px;
+}
+
+/* Empty page message */
+.empty-page-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+  color: #666;
+  background-color: #f9f9f9;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  margin: 20px;
+}
+
+.empty-page-message p {
+  margin: 5px 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.empty-page-message p:first-child {
+  font-weight: bold;
+  color: #6b8af8; /* Lighter blue color to match section titles */
+  font-size: 14px;
+}
+
+/* Achievement styles - Clean and space-efficient */
+.achievements-section {
+  display: block; /* Changed from grid to block to avoid columns */
+  margin: 5px 0;
+}
+
+.achievement-item {
+  margin-bottom: 6px;
+  padding-bottom: 0;
+  border-bottom: none;
+  position: relative;
+}
+
+.achievement-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+  align-items: center; /* Added for better alignment */
+  flex-wrap: nowrap; /* Changed from wrap to nowrap to keep on same line */
+  width: 100%; /* Ensure it takes full width */
+}
+
+.achievement-title {
+  font-weight: bold;
+  font-size: 11px;
+  color: #333;
+  white-space: nowrap; /* Changed from normal to nowrap to keep on one line */
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.achievement-date {
+  font-style: italic;
+  color: #666;
+  font-size: 10px;
+}
+
+.achievement-organization {
+  margin-bottom: 2px;
+  font-size: 10px;
+  color: #555;
+  font-style: italic;
+}
+
+.achievement-description {
+  font-size: 10px;
+  line-height: 1.3;
+  color: #555;
+}
+
+/* Certification styles - Clean and space-efficient */
+.certifications-section {
+  display: block;
+  margin: 5px 0;
+  list-style-type: disc;
+  padding-left: 18px;
+}
+
+.certification-item {
+  margin-bottom: 6px;
+  padding-bottom: 0;
+  border-bottom: none;
+  position: relative;
+  display: list-item;
+}
+
+.certification-header {
+  display: inline;
+  margin-bottom: 0;
+}
+
+.certification-name {
+  font-weight: bold;
+  font-size: 12px;
+  color: #333;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  display: inline;
+}
+
+.certification-date {
+  font-style: italic;
+  color: #666;
+  font-size: 11px;
+  display: inline;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+
+.certification-issuer {
+  font-size: 11px;
+  color: #555;
+  font-style: italic;
+  display: block;
+  margin-top: 2px;
+  margin-left: 0;
+  clear: both;
+}
+
+/* Language styles - Clean and space-efficient */
+.languages-section {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px 0;
+  gap: 15px;
+}
+
+.language-item {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0;
+  padding: 2px 8px;
+  background-color: #f0f4ff;
+  border-radius: 4px;
+  border: 1px solid #e0e7ff;
+}
+
+.language-name {
+  font-weight: bold;
+  font-size: 11px;
+  color: #333;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  margin-right: 4px;
+}
+
+.language-proficiency {
+  color: #666;
+  font-size: 10px;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+/* Experience item styles - Clean and space-efficient */
+.experience-item {
+  margin-bottom: 15px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.experience-header {
+  margin-bottom: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.experience-title-company {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 2px;
+  float: left;
+  max-width: 70%;
+}
+
+.experience-title {
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  font-size: 13px;
+  display: block;
+}
+
+.experience-company {
+  font-weight: normal;
+  color: #555;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  font-size: 12px;
+  display: block;
+  clear: left;
+}
+
+.experience-location-period {
+  font-size: 11px;
+  color: #666;
+  font-style: italic;
+  text-align: right;
+  white-space: nowrap;
+  float: right;
+  max-width: 30%;
+  margin-bottom: 6px;
+}
+
+.experience-bullets {
+  margin: 0;
+  padding-left: 18px;
+  list-style-type: disc;
+  clear: both;
+}
+
+.experience-bullets li {
+  margin-bottom: 6px; /* Increased from 5px to 6px */
+  font-size: 12px; /* Increased from 11px to 12px */
+  line-height: 1.5; /* Increased from 1.4 to 1.5 */
+  padding-left: 0;
+  color: #333; /* Added color */
+}
+
+/* Education item styles - Clean and space-efficient */
+.education-section {
+  display: block; /* Changed from grid to block to avoid columns */
+  margin: 5px 0;
+}
+
+.education-item {
+  margin-bottom: 15px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.education-header {
+  margin-bottom: 2px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.education-degree {
+  font-weight: bold;
+  color: #333;
+  font-size: 13px;
+  display: block;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  float: left;
+  max-width: 70%;
+}
+
+.education-school {
+  font-weight: normal;
+  color: #555;
+  font-size: 12px;
+  display: block;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  clear: left;
+}
+
+.education-location-year {
+  font-size: 11px;
+  color: #666;
+  font-style: italic;
+  text-align: right;
+  white-space: nowrap;
+  float: right;
+  max-width: 30%;
+}
+
+/* Skills styles - Clean and space-efficient */
+.skills-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 10px 0;
+  justify-content: space-between;
+}
+
+.skill-category {
+  width: auto;
+  min-width: 200px;
+  margin-bottom: 12px;
+  flex: 1 1 30%;
+  padding-right: 15px;
+}
+
+.skill-category-name {
+  font-size: 12px;
+  font-weight: bold;
+  color: #6b8af8; /* Lighter blue color to match section titles */
+  margin-bottom: 5px;
+  border-bottom: 1px solid #e0e7ff; /* Light border to match section titles */
+  display: block;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  padding-bottom: 2px;
+  text-transform: uppercase; /* Match section titles */
+  letter-spacing: 0.5px; /* Match section titles */
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.skill-item {
+  display: inline-block;
+  color: #555;
+  background-color: #f5f7ff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid #e0e7ff;
+}
+
+/* Remove commas between skills */
+.skill-item:after {
+  content: "";
+}
+
+.skill-item:last-child:after {
+  content: "";
+}
+
+/* Project styles - Clean and space-efficient */
+.projects-section {
+  display: block; /* Changed from grid to block to avoid columns */
+  margin: 5px 0;
+}
+
+.project-item {
+  margin-bottom: 10px;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.project-header {
+  margin-bottom: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Changed from baseline to center for better alignment */
+  flex-wrap: nowrap; /* Changed from wrap to nowrap to keep on same line */
+  width: 100%; /* Ensure it takes full width */
+}
+
+.project-name {
+  font-weight: bold;
+  font-size: 11px;
+  color: #333;
+  white-space: nowrap; /* Changed from normal to nowrap to keep on one line */
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.project-link {
+  font-size: 10px;
+  color: #6b8af8; /* Lighter blue color to match section titles */
+}
+
+.project-date {
+  font-style: italic;
+  color: #666;
+  font-size: 10px;
+}
+
+.project-description {
+  font-size: 10px;
+  margin: 3px 0;
+  line-height: 1.3;
+  color: #555;
+}
+
+.project-technologies {
+  font-size: 10px;
+  margin-top: 2px;
+}
+
+.project-tech {
+  display: inline-block; /* Changed from inline to inline-block */
+  color: #555;
+  margin-right: 5px; /* Increased from 2px to 5px */
+  white-space: nowrap; /* Added to prevent wrapping */
+}
+
+.project-tech:after {
+  content: ",";
+}
+
+.project-tech:last-child:after {
+  content: "";
+}
+
+/* Add more styles for different templates as needed */
+
+/* Continuation indicators for sections that span multiple pages */
+.continuation-indicator {
+  background-color: #f8f9fa;
+  color: #666;
+  padding: 3px 8px;
+  font-size: 9px;
+  text-align: center;
+  border-radius: 3px;
+  margin: 3px 0;
+  font-style: italic;
+}
+
+.continuation-indicator.from-previous {
+  border-top: 1px dashed #ccc;
+  margin-top: 0;
+}
+
+.continuation-indicator.to-next {
+  border-bottom: 1px dashed #ccc;
+  margin-bottom: 0;
+}
+
+.continuation-indicator.both {
+  border-top: 1px dashed #ccc;
+  border-bottom: 1px dashed #ccc;
+}
+
+/* Style for sections that continue across pages */
+.resume-section.continues-from-previous {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.resume-section.continues-to-next {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* Make sure content flows properly */
+.resume-section {
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+/* Ensure section content can be split across pages */
+.section-content {
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+/* Allow items within sections to break across pages */
+.experience-item,
+.education-item,
+.project-item,
+.skill-category,
+.certification-item,
+.language-item,
+.achievement-item {
+  break-inside: auto;
+  page-break-inside: auto;
+}

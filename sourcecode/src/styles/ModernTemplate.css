@@ -1,0 +1,479 @@
+/* Modern Template Styles */
+
+/* Header styles */
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+}
+
+.resume-header-content {
+  flex: 1;
+}
+
+.resume-name-title {
+  margin-bottom: 10px;
+}
+
+.resume-name {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.resume-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+/* Contact information styles */
+.resume-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 200px;
+}
+
+.resume-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Section styles */
+.resume-section {
+  margin-bottom: 15px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.section-content {
+  font-size: 12px;
+}
+
+/* Experience section */
+.experience-item {
+  margin-bottom: 15px;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.experience-title-company {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.experience-company {
+  font-size: 13px;
+}
+
+.experience-location-period {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 12px;
+  color: #555;
+}
+
+.experience-bullets {
+  margin: 5px 0 0 20px;
+  padding-left: 0;
+}
+
+.experience-bullets li {
+  margin-bottom: 3px;
+}
+
+/* Education section */
+.education-item {
+  margin-bottom: 15px;
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.education-title-company {
+  display: flex;
+  flex-direction: column;
+}
+
+.education-degree {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.education-school {
+  font-size: 13px;
+}
+
+.education-location {
+  font-size: 12px;
+  color: #555;
+  margin-top: 3px;
+}
+
+.education-period {
+  font-size: 12px;
+  color: #555;
+  text-align: right;
+}
+
+/* Skills section */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.skill-category {
+  flex: 1;
+  min-width: 200px;
+}
+
+.skill-category-name {
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-item {
+  background-color: #f5f5f5;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+}
+
+/* Projects section */
+.project-item {
+  margin-bottom: 15px;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.project-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.project-link {
+  font-size: 12px;
+  color: #555;
+}
+
+.project-description {
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.project-tech {
+  background-color: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  color: #555;
+}
+
+/* Certifications section */
+.certification-item {
+  margin-bottom: 10px;
+}
+
+.certification-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.certification-name {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.certification-date {
+  font-size: 12px;
+  color: #555;
+}
+
+.certification-issuer {
+  font-size: 12px;
+}
+
+/* Languages section */
+.language-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.language-name {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.language-proficiency {
+  font-size: 12px;
+  color: #555;
+}
+
+/* Achievements section */
+.achievement-item {
+  margin-bottom: 15px;
+}
+
+.achievement-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.achievement-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.achievement-date {
+  font-size: 12px;
+  color: #555;
+}
+
+.achievement-organization {
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.achievement-description {
+  font-size: 12px;
+}
+
+/* Summary section */
+.summary-content {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Hover and active states */
+.resume-section.hovered {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Publications section */
+.publications-section {
+  margin-bottom: 15px;
+}
+
+.publication-item {
+  margin-bottom: 12px;
+}
+
+.publication-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.publication-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.publication-date {
+  font-size: 12px;
+  color: #555;
+}
+
+.publication-publisher {
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.publication-summary {
+  font-size: 12px;
+}
+
+/* Volunteer section */
+.volunteer-section {
+  margin-bottom: 15px;
+}
+
+.volunteer-item {
+  margin-bottom: 12px;
+}
+
+.volunteer-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.volunteer-position {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.volunteer-organization {
+  font-size: 13px;
+}
+
+.volunteer-dates {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 3px;
+}
+
+.volunteer-summary {
+  font-size: 12px;
+}
+
+/* Interests section */
+.interests-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.interest-item {
+  flex: 1;
+  min-width: 150px;
+  margin-bottom: 10px;
+}
+
+.interest-name {
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+.interest-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.interest-keyword {
+  background-color: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 10px;
+  color: #555;
+}
+
+/* Awards section */
+.awards-section {
+  margin-bottom: 15px;
+}
+
+.award-item {
+  margin-bottom: 12px;
+}
+
+.award-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.award-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.award-date {
+  font-size: 12px;
+  color: #555;
+}
+
+.award-awarder {
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.award-summary {
+  font-size: 12px;
+}
+
+/* Continuation indicators for multi-page resumes */
+.continuation-indicator {
+  font-size: 10px;
+  font-style: italic;
+  color: #777;
+  padding: 3px 0;
+  margin: 3px 0;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 3px;
+}
+
+/* Responsive styles */
+@media print {
+  .resume-template {
+    padding: 0;
+    margin: 0;
+  }
+
+  .section-controls {
+    display: none;
+  }
+
+  .continuation-indicator {
+    display: none;
+  }
+}

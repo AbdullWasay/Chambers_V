@@ -1,0 +1,33 @@
+/* Theme colors based on logo */
+:root {
+  /* Primary colors from logo */
+  --color-light-blue: #a7c1e0;
+  --color-medium-blue: #6a96c8;
+  --color-dark-blue: #3a6ea5;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  
+  /* Background colors */
+  --color-background: #f5f7fa;
+  --color-background-alt: #ffffff;
+  
+  /* Text colors */
+  --color-text-primary: #333333;
+  --color-text-secondary: #555555;
+  --color-text-light: #666666;
+  
+  /* UI colors */
+  --color-primary: var(--color-dark-blue);
+  --color-primary-hover: #2d5a8a;
+  --color-secondary: var(--color-medium-blue);
+  --color-accent: var(--color-black);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-light-blue) 0%, var(--color-dark-blue) 100%);
+  --gradient-hero: linear-gradient(135deg, #f5f7fa 0%, var(--color-light-blue) 100%);
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 10px rgba(58, 110, 165, 0.2);
+  --shadow-lg: 0 6px 15px rgba(58, 110, 165, 0.3);
+}

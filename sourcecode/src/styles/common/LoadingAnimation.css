@@ -1,0 +1,257 @@
+/* Loading Animation Container */
+.loading-animation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+/* Loading Animation Overlay */
+.loading-animation-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Loading Animation Text */
+.loading-animation-text {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+}
+
+/* Spinner Animation */
+.loading-spinner {
+  border-radius: 50%;
+  border: 3px solid #e0e0e0;
+  border-top-color: #4a6cf7;
+  animation: spin 1s linear infinite;
+}
+
+/* Size variations for spinner */
+.loading-spinner.loading-animation-small {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+.loading-spinner.loading-animation-medium {
+  width: 40px;
+  height: 40px;
+  border-width: 3px;
+}
+
+.loading-spinner.loading-animation-large {
+  width: 60px;
+  height: 60px;
+  border-width: 4px;
+}
+
+/* Progress Bar Animation */
+.loading-progress {
+  width: 100%;
+  max-width: 300px;
+}
+
+.loading-progress-container {
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.loading-progress-bar {
+  height: 100%;
+  background-color: #4a6cf7;
+  border-radius: 4px;
+}
+
+.loading-progress-text {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
+/* Size variations for progress bar */
+.loading-progress.loading-animation-small .loading-progress-container {
+  height: 4px;
+  max-width: 150px;
+}
+
+.loading-progress.loading-animation-medium .loading-progress-container {
+  height: 8px;
+  max-width: 250px;
+}
+
+.loading-progress.loading-animation-large .loading-progress-container {
+  height: 12px;
+  max-width: 350px;
+}
+
+/* Logo Animation */
+.loading-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Size variations for logo */
+.loading-logo.loading-animation-small svg {
+  width: 24px;
+  height: 24px;
+}
+
+.loading-logo.loading-animation-medium svg {
+  width: 40px;
+  height: 40px;
+}
+
+.loading-logo.loading-animation-large svg {
+  width: 60px;
+  height: 60px;
+}
+
+/* Dots Animation */
+.loading-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-dots .dot {
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  border-radius: 50%;
+  background-color: #4a6cf7;
+  animation: pulse 1.4s infinite ease-in-out;
+}
+
+/* Size variations for dots */
+.loading-dots.loading-animation-small .dot {
+  width: 6px;
+  height: 6px;
+  margin: 0 3px;
+}
+
+.loading-dots.loading-animation-medium .dot {
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+}
+
+.loading-dots.loading-animation-large .dot {
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+}
+
+/* Gears Animation */
+.loading-gears {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.gear {
+  position: relative;
+  border: 3px dashed #4a6cf7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gear-left {
+  width: 30px;
+  height: 30px;
+  margin-right: -5px;
+  animation: gear-rotate-left 3s linear infinite;
+}
+
+.gear-right {
+  width: 20px;
+  height: 20px;
+  margin-left: -5px;
+  animation: gear-rotate-right 2s linear infinite;
+}
+
+.gear-inner {
+  width: 30%;
+  height: 30%;
+  background-color: #4a6cf7;
+  border-radius: 50%;
+}
+
+/* Size variations for gears */
+.loading-gears.loading-animation-small .gear-left {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+.loading-gears.loading-animation-small .gear-right {
+  width: 14px;
+  height: 14px;
+  border-width: 2px;
+}
+
+.loading-gears.loading-animation-medium .gear-left {
+  width: 30px;
+  height: 30px;
+  border-width: 3px;
+}
+
+.loading-gears.loading-animation-medium .gear-right {
+  width: 20px;
+  height: 20px;
+  border-width: 3px;
+}
+
+.loading-gears.loading-animation-large .gear-left {
+  width: 45px;
+  height: 45px;
+  border-width: 4px;
+}
+
+.loading-gears.loading-animation-large .gear-right {
+  width: 30px;
+  height: 30px;
+  border-width: 4px;
+}
+
+/* Animated Text */
+.loading-text {
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Size variations for text */
+.loading-text.loading-animation-small {
+  font-size: 12px;
+  min-height: 18px;
+}
+
+.loading-text.loading-animation-medium {
+  font-size: 16px;
+  min-height: 24px;
+}
+
+.loading-text.loading-animation-large {
+  font-size: 20px;
+  min-height: 30px;
+}
