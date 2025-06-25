@@ -16,7 +16,23 @@ import TemplateModal from "./modals/TemplateModal"
 import AIChatbot from "./AIChatbot"
 
 const Editor = ({ initialData }) => {
-  const [resumeData, setResumeData] = useState(initialData)
+  // Check for data in sessionStorage first, then fall back to initialData
+  const getInitialData = () => {
+    const sessionData = sessionStorage.getItem('currentResumeData');
+    if (sessionData) {
+      try {
+        const parsedData = JSON.parse(sessionData);
+        // Clear the session data after using it
+        sessionStorage.removeItem('currentResumeData');
+        return parsedData;
+      } catch (error) {
+        console.error('Error parsing session data:', error);
+      }
+    }
+    return initialData;
+  };
+
+  const [resumeData, setResumeData] = useState(getInitialData())
   const [activeModal, setActiveModal] = useState(null)
   const [currentTemplate, setCurrentTemplate] = useState("modern")
   const [isCustomizationSidebarOpen, setIsCustomizationSidebarOpen] = useState(false)
@@ -50,33 +66,33 @@ const Editor = ({ initialData }) => {
     { id: "skills", title: "Skills" },
   ])
 
-  // Initialize sections based on initial data
+  // Initialize sections based on resume data
   useEffect(() => {
-    if (!initialData) return
+    if (!resumeData) return
 
     const sections = []
-    console.log("Initial data for sections:", initialData);
+    console.log("Resume data for sections:", resumeData);
 
     // Handle basics section which contains name, title, email, phone, location, and summary
-    if (initialData.basics) {
+    if (resumeData.basics) {
       // If summary is in basics, add it as a separate section
-      if (initialData.basics.summary) {
+      if (resumeData.basics.summary) {
         sections.push({ id: "summary", title: "Summary" })
         // Make sure summary is also available at the top level
-        if (!initialData.summary) {
-          initialData.summary = initialData.basics.summary;
+        if (!resumeData.summary) {
+          resumeData.summary = resumeData.basics.summary;
         }
       }
-    } else if (initialData.summary) {
+    } else if (resumeData.summary) {
       sections.push({ id: "summary", title: "Summary" })
     }
 
     // Handle experience section
-    if (initialData.experience && initialData.experience.length > 0) {
+    if (resumeData.experience && resumeData.experience.length > 0) {
       sections.push({ id: "experience", title: "Experience" })
 
       // Normalize experience data structure
-      initialData.experience = initialData.experience.map(exp => {
+      resumeData.experience = resumeData.experience.map(exp => {
         // Ensure highlights exists and is an array
         if (!exp.highlights && exp.description) {
           // If there are no highlights but there's a description, create highlights from description
@@ -89,11 +105,11 @@ const Editor = ({ initialData }) => {
     }
 
     // Handle education section
-    if (initialData.education && initialData.education.length > 0) {
+    if (resumeData.education && resumeData.education.length > 0) {
       sections.push({ id: "education", title: "Education" })
 
       // Normalize education data structure
-      initialData.education = initialData.education.map(edu => {
+      resumeData.education = resumeData.education.map(edu => {
         // Ensure all required fields exist
         if (!edu.degree && edu.studyType) {
           edu.degree = edu.studyType;
@@ -106,11 +122,11 @@ const Editor = ({ initialData }) => {
     }
 
     // Handle skills section
-    if (initialData.skills && initialData.skills.length > 0) {
+    if (resumeData.skills && resumeData.skills.length > 0) {
       sections.push({ id: "skills", title: "Skills" })
 
       // Normalize skills data structure
-      initialData.skills = initialData.skills.map(skill => {
+      resumeData.skills = resumeData.skills.map(skill => {
         // If skill has name and keywords, format it properly
         if (skill.name && skill.keywords) {
           return {
@@ -127,11 +143,11 @@ const Editor = ({ initialData }) => {
     }
 
     // Add additional sections if they exist in the data
-    if (initialData.projects && initialData.projects.length > 0) {
+    if (resumeData.projects && resumeData.projects.length > 0) {
       sections.push({ id: "projects", title: "Projects" })
 
       // Normalize projects data
-      initialData.projects = initialData.projects.map(project => {
+      resumeData.projects = resumeData.projects.map(project => {
         if (!project.technologies && project.keywords) {
           project.technologies = project.keywords;
         }
@@ -140,16 +156,16 @@ const Editor = ({ initialData }) => {
     }
 
     // Handle certifications
-    if (initialData.certifications && initialData.certifications.length > 0) {
+    if (resumeData.certifications && resumeData.certifications.length > 0) {
       sections.push({ id: "certifications", title: "Certifications" })
     }
 
     // Handle languages
-    if (initialData.languages && initialData.languages.length > 0) {
+    if (resumeData.languages && resumeData.languages.length > 0) {
       sections.push({ id: "languages", title: "Languages" })
 
       // Normalize languages data
-      initialData.languages = initialData.languages.map(lang => {
+      resumeData.languages = resumeData.languages.map(lang => {
         if (!lang.proficiency && lang.fluency) {
           lang.proficiency = lang.fluency;
         }
@@ -158,12 +174,12 @@ const Editor = ({ initialData }) => {
     }
 
     // Handle achievements/awards
-    if (initialData.achievements && initialData.achievements.length > 0) {
+    if (resumeData.achievements && resumeData.achievements.length > 0) {
       sections.push({ id: "achievements", title: "Achievements" })
-    } else if (initialData.awards && initialData.awards.length > 0) {
+    } else if (resumeData.awards && resumeData.awards.length > 0) {
       sections.push({ id: "awards", title: "Awards" })
       // Map awards to achievements format
-      initialData.achievements = initialData.awards.map(award => ({
+      resumeData.achievements = resumeData.awards.map(award => ({
         title: award.title,
         date: award.date,
         organization: award.awarder,
@@ -172,26 +188,23 @@ const Editor = ({ initialData }) => {
     }
 
     // Handle interests
-    if (initialData.interests && initialData.interests.length > 0) {
+    if (resumeData.interests && resumeData.interests.length > 0) {
       sections.push({ id: "interests", title: "Interests" })
     }
 
     // Handle publications
-    if (initialData.publications && initialData.publications.length > 0) {
+    if (resumeData.publications && resumeData.publications.length > 0) {
       sections.push({ id: "publications", title: "Publications" })
     }
 
     // Handle volunteer work
-    if (initialData.volunteer && initialData.volunteer.length > 0) {
+    if (resumeData.volunteer && resumeData.volunteer.length > 0) {
       sections.push({ id: "volunteer", title: "Volunteer Experience" })
     }
 
     console.log("Sections to display:", sections);
     setResumeSections(sections);
-
-    // Update resume data with normalized data
-    setResumeData({...initialData});
-  }, [initialData])
+  }, [resumeData])
 
   // Apply design settings to the resume preview
   useEffect(() => {

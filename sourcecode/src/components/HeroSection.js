@@ -2,43 +2,41 @@
 
 import "../styles/HeroSection.css"
 
-const HeroSection = ({ onCreateResume }) => {
+const HeroSection = () => {
   return (
     <div className="hero-section">
+      {/* Video Background */}
+      <video
+        className="hero-video-background"
+        autoPlay
+        muted
+        loop
+        playsInline
+      >
+        <source src="/homepage.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Video Overlay */}
+      <div className="hero-video-overlay"></div>
+
       <div className="hero-content-wrapper">
         <div className="hero-text-content">
-          <h1>Craft Your <span className="highlight">Perfect Resume</span> in Minutes</h1>
+          <h1>Resume Perfected <span className="highlight">by AI</span></h1>
           <p className="hero-subtitle">
-            Our AI-powered platform helps you create professional, ATS-optimized resumes that stand out and get you more interviews.
+            Get past ATS and land more interviews in minutes
           </p>
 
-          <div className="hero-options">
-            <button className="hero-option-button" onClick={onCreateResume}>Resume</button>
-            <button className="hero-option-button">Cover Letter</button>
-            <button className="hero-option-button">Emails</button>
-            <button className="hero-option-button">Jobs</button>
-            <button className="hero-option-button">Package</button>
+          <div className="hero-cta-section">
+            <button className="hero-primary-button">
+              Enter →
+            </button>
           </div>
 
-          <div className="hero-features">
-            <div className="hero-feature">
-              <span className="feature-icon">✓</span>
-              <span>ATS-optimized templates</span>
-            </div>
-            <div className="hero-feature">
-              <span className="feature-icon">✓</span>
-              <span>Ready in minutes</span>
-            </div>
-          </div>
+
         </div>
 
-        <div className="hero-image-content">
-          <img
-            src="/bg.png"
-            alt="Professional Resume Template"
-            className="hero-dashboard-image"
-          />
-        </div>
+
       </div>
     </div>
   )

@@ -1,20 +1,63 @@
 "use client"
 
 import { useState } from "react"
-import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom"
+import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom"
+import Dashboard from "./components/Dashboard"
 import Editor from "./components/Editor"
 import Header from "./components/Header"
 import HeroSection from "./components/HeroSection"
 import LoadingAnimation from "./components/LoadingAnimation"
-import UploadResume from "./components/UploadResume"
+import Onboarding from "./components/Onboarding"
+import { useAuth } from "./contexts/AuthContext"
 import LatestResumePage from "./pages/LatestResumePage"
 import "./styles/App.css"
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const auth = useAuth();
   const [resumeData, setResumeData] = useState(null)
   const [uploadStatus, setUploadStatus] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [loadingType, setLoadingType] = useState("spinner")
+
+  const showHeader = location.pathname !== '/dashboard' && location.pathname !== '/onboarding';
+
+  // Check if user has completed onboarding
+  const hasCompletedOnboarding = () => {
+    if (!auth.user?.profile?.sub && !auth.user?.profile?.email) return false;
+    const userId = auth.user.profile.sub || auth.user.profile.email;
+    return localStorage.getItem(`onboarding_completed_${userId}`) === 'true';
+  };
+
+  // Mark onboarding as completed
+  const markOnboardingCompleted = () => {
+    if (auth.user?.profile?.sub || auth.user?.profile?.email) {
+      const userId = auth.user.profile.sub || auth.user.profile.email;
+      localStorage.setItem(`onboarding_completed_${userId}`, 'true');
+    }
+  };
+
+  // Handle authentication loading and errors
+  if (auth.isLoading) {
+    return <LoadingAnimation type="spinner" showProgress={true} />;
+  }
+
+  if (auth.error) {
+    return (
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+        flexDirection: 'column',
+        gap: '20px'
+      }}>
+        <h2>Authentication Error</h2>
+        <p>{auth.error.message}</p>
+        <button onClick={() => window.location.reload()}>Retry</button>
+      </div>
+    );
+  }
 
   const handleUploadSuccess = (data) => {
     // Show loading animation
@@ -81,58 +124,40 @@ function App() {
   }
 
   return (
-    <Router>
-      <div className="app">
-        <Header />
-        {isLoading && <LoadingAnimation type={loadingType} showProgress={true} />}
+    <div className="app">
+      {showHeader && <Header />}
+      {isLoading && <LoadingAnimation type={loadingType} showProgress={true} />}
         <Routes>
           <Route
             path="/"
             element={
-              <div className="home-page">
-                <HeroSection
-                  onCreateResume={() => document.querySelector('.upload-container').scrollIntoView({ behavior: 'smooth' })}
-                />
-
-                <div className="features-section">
-                  <h2>Why Choose Chambers_V</h2>
-                  <div className="features-grid">
-                    <div className="feature-card">
-                      <div className="feature-icon">📈</div>
-                      <h3>ATS Optimization</h3>
-                      <p>Our AI analyzes your resume against job descriptions to maximize your chances of passing ATS systems</p>
-                    </div>
-                    <div className="feature-card">
-                      <div className="feature-icon">🎨</div>
-                      <h3>Professional Templates</h3>
-                      <p>Choose from our collection of professionally designed templates that stand out</p>
-                    </div>
-                    <div className="feature-card">
-                      <div className="feature-icon">⚡</div>
-                      <h3>Instant Results</h3>
-                      <p>Get your optimized resume in seconds, not hours</p>
-                    </div>
-                  </div>
+              auth.isAuthenticated ? (
+                hasCompletedOnboarding() ? (
+                  <Navigate to="/dashboard" replace />
+                ) : (
+                  <Navigate to="/onboarding" replace />
+                )
+              ) : (
+                <div className="home-page">
+                  <HeroSection />
                 </div>
-
-                <div className="upload-container" id="upload-section">
-                  <h2>Upload Your Resume</h2>
-                  <p className="subtitle">Let our AI optimize it for your target job</p>
-                  <UploadResume onSuccess={handleUploadSuccess} onError={handleUploadError} />
-                  {uploadStatus === "success" && resumeData && <Navigate to="/editor" replace />}
-                  {uploadStatus === "error" && (
-                    <div className="error-message">Error uploading resume. Please try again.</div>
-                  )}
-                </div>
-
-
-              </div>
+              )
+            }
+          />
+          <Route
+            path="/onboarding"
+            element={
+              auth.isAuthenticated ? (
+                <Onboarding />
+              ) : (
+                <Navigate to="/" replace />
+              )
             }
           />
           <Route
             path="/editor"
             element={
-              resumeData ? (
+              auth.isAuthenticated ? (
                 <Editor initialData={resumeData} />
               ) : (
                 <Navigate to="/" replace />
@@ -143,50 +168,25 @@ function App() {
             path="/latest-resume"
             element={<LatestResumePage />}
           />
+          <Route
+            path="/dashboard"
+            element={
+              auth.isAuthenticated ? (
+                <Dashboard />
+              ) : (
+                <Navigate to="/" replace />
+              )
+            }
+          />
         </Routes>
-        <footer className="footer">
-          <div className="footer-content">
-            <div className="footer-logo">
-              <h3>Chambers_V</h3>
-              <p>AI-Powered Resume Optimization</p>
-            </div>
-            <div className="footer-links">
-              <div className="footer-column">
-                <h4>Product</h4>
-                <ul>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Templates</a></li>
-                  <li><a href="#">Pricing</a></li>
-                </ul>
-              </div>
-              <div className="footer-column">
-                <h4>Resources</h4>
-                <ul>
-                  <li><a href="#">Blog</a></li>
-                  <li><a href="#">Guides</a></li>
-                  <li><a href="#">Support</a></li>
-                </ul>
-              </div>
-              <div className="footer-column">
-                <h4>Company</h4>
-                <ul>
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Careers</a></li>
-                  <li><a href="#">Contact</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>© {new Date().getFullYear()} Chambers_V AI. All rights reserved.</p>
-            <div className="footer-social">
-              <a href="#" aria-label="Twitter"><span>Twitter</span></a>
-              <a href="#" aria-label="LinkedIn"><span>LinkedIn</span></a>
-              <a href="#" aria-label="Facebook"><span>Facebook</span></a>
-            </div>
-          </div>
-        </footer>
       </div>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   )
 }

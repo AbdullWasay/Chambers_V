@@ -2,13 +2,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 40px;
-  height: 60px; /* Reduced height for smaller logo */
-  background-color: var(--color-background-alt);
-  border-bottom: 1px solid rgba(58, 110, 165, 0.1);
-  box-shadow: var(--shadow-sm);
-  position: sticky;
+  padding: 20px 40px;
+  height: 80px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  position: absolute;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
 }
 
@@ -21,14 +23,15 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: var(--color-text-primary);
+  color: white;
   font-weight: 700;
   font-size: 20px;
   transition: color 0.2s;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .logo a:hover {
-  color: var(--color-primary);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .logo svg {
@@ -41,6 +44,8 @@
   object-fit: contain;
   border-radius: 4px;
   transition: transform 0.3s ease;
+  background: transparent;
+  mix-blend-mode: multiply;
 }
 
 .logo a:hover img {
@@ -107,6 +112,62 @@
 .new-resume-btn:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
+}
+
+.signin-btn {
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.signin-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-email {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.signout-btn {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.signout-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
 }
 
 .search-box {
